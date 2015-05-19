@@ -4,60 +4,31 @@
 library(multiseq)
 
 setMSparam = function(msparam){
-  if(is.null(reflect)){
-    reflect = FALSE    
+  if(is.null(msparam$reflect)){
+    msparam$reflect = FALSE    
   }
-  if(is.null(baseline)){
-    baseline = "inter"
+  if(is.null(msparam$baseline)){
+    msparam$baseline = "inter"
   }
-  if(is.null(minobs)){
-    minobs = 1
+  if(is.null(msparam$minobs)){
+    msparam$minobs = 1
   }
-  if(is.null(pseudocounts)){
-    pseudocounts = 0.5
+  if(is.null(msparam$pseudocounts)){
+    msparam$pseudocounts = 0.5
   }
-  if(is.null(all)){
-    all = FALSE
+  if(is.null(msparam$all)){
+    msparam$all = FALSE
   }
-  if(is.null(center)){
-    center = FALSE
+  if(is.null(msparam$center)){
+    msparam$center = FALSE
   }
-  if(is.null(repara)){
-    repara = TRUE
+  if(is.null(msparam$verbose)){
+    msparam$verbose = TRUE
   }
-  if(is.null(forcebin)){
-    forcebin = FALSE
+  if(is.null(msparam$ashparam)){
+    msparam$ashparam = list()
   }
-  if(is.null(lm.approx)){
-    lm.approx = TRUE
-  }
-  if(is.null(disp)){
-    disp = "add"
-  }
-  if(is.null(shape.eff)){
-    shape.eff = FALSE
-  }
-  if(is.null(cxx)){
-    cxx = TRUE
-  }
-  if(is.null(smoothing)){
-    smoothing = TRUE
-  }
-  if(is.null(cyclespin)){
-    cyclespin = TRUE
-  }
-  if(is.null(reverse)){
-    reverse = TRUE
-  }
-  if(is.null(get.fitted.g)){
-    get.fitted.g = TRUE
-  }
-  if(is.null(verbose)){
-    verbose = TRUE
-  }
-  if(is.null(ashparam)){
-    ashparam = list()
-  }
+  return(msparam)
 }
 
 #runs wavelet shrinkage method SMASH assuming a constant variance
