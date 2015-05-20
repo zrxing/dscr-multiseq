@@ -9,4 +9,5 @@ score = function(data, output){
   loglr = output
   return(list(loglr = loglr))
 }
-addScore(dsc_multiseq, score , "loglr", outputtype = "loglr_output")
+addScore(dsc_multiseq, score, "ms.loglr", outputtype = "loglr_output")
+addScore(dsc_multiseq, score, "wave.loglr")
