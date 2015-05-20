@@ -3,6 +3,8 @@
 #the output should be a list of the appropriate "output" format (defined in the README)
 library(multiseq)
 
+
+#this function sets the default parameters for function multiseq
 setMSparam = function(msparam){
   if(is.null(msparam$reflect)){
     msparam$reflect = FALSE    
@@ -31,12 +33,12 @@ setMSparam = function(msparam){
   return(msparam)
 }
 
-#runs wavelet shrinkage method SMASH assuming a constant variance
+#runs multiseq on a give dataset with a set of specified parameters
 #inputs:
-#input: a list containing x: the data, sig.true the true sigma values, and sig.est: the estimated sigma values
-#args: a list containing family and filter.number, which determine the wavelet basis used
+#input: a list containing sim.data: the matrix of simulated counts, and g: a vector of group indicators
+#args: a list containing specified multiseq options
 #
-#returns the estimated (posterior mean) mean function
+#returns the results from multiseq
 multiseq.wrapper = function(input, args){
     msparam = setMSparam(args)
     res = do.call(multiseq, c(list(x = input$sim.data, g = input$g), msparam))

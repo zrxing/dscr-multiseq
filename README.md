@@ -1,29 +1,26 @@
-# dscr-smash
-A simulation study comparing the wavelet shrinkage procedure SMASH (Xing and Stephens) and other popular wavelet denoising procedures
+# dscr-multiseq
+A simulation study to benchmark the package multiseq, when run with different options under different scenarios. Future work involves adding other procedures in, most notably WaveQTL
 
 # Background 
 
 For a general introduction to DSCs, see [here](https://github.com/stephens999/dscr/blob/master/intro.md).
 
-In this simulation study, we aim to compare several methods for performing nonparametric regression in the Gaussian case. The problem is of the form Y_i=\mu_i+\epsilon_i, i=1,...,n, where \mu is the underlying mean function and assumed to be "smooth", and \epsilon_i's are independent Gaussian noise with mean 0 and variance \sigma_i^2. The goal is to recover \mu as accurately as possible given Y.
+This dsc aims to benchmark the package multiseq for internal testing purposes. Different simulation scenarios can be considered, and different options for multiseq can be specified. The next step is to include WaveQTL as a possible alternative, and to compare results across methods and between different versions.
 
-The simulation schemes cover a wide range of different mean and variance functions (\mu and \sigma), as well as different signal to noise ratios (SNRs). The various methods are run and the resulting estimate of \mu is scored using the mean integrated squared error (MISE), which is simply the standard mean squared error rescaled appropriately.
 
 # Input, meta and output formats
 
 This DSC uses the following formats:
 
-`input: list(x [vector], sig.true [vector], sig.est [vector])` #x is the vector of observations. sig.true contains the true values of \sigma_i, and sig.est is an estimate of \sigma under the assumption that all \sigma_i's are equal.
-
-`meta: list(mu [vector])` #mu contains the true values of \mu_i as defined above
+`input: list(sim.data [matrix], g [vector])` #sim.data is a simulated matrix of Poisson or overdispersed Poisson counts. g contains the grouping indicator for each row of sim.data
 
 
-`output: an estimate of \mu [vector]` 
+`output: results from running multiseq [list]` 
 
 
 # Scores
 
-The performance of a method is scored by the quantity 10000*sum((\mu_i-\mu-hat_i)^2)/sum(\mu_i^2), where \mu is the true mean function and \mu-hat is the estimated mean function
+The performance of a method is determined by the log likelihood ratios for a given method, under null and alternative simulations. The final performance is given by the ROC curve generated based on the ranking of the log likelihood ratios under the null and the alternative.
 
 See [score.R](score.R).
 
