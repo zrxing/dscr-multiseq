@@ -1,11 +1,12 @@
 # dscr-multiseq
-A simulation study to benchmark the package multiseq, when run with different options under different scenarios. Future work involves adding other procedures in, most notably WaveQTL
+A simulation study to benchmark the package multiseq, when run with different options under different scenarios. Current alternative method includes WaveQTL by Heejung Shim and Matthew Stephens.
 
 # Background 
 
 For a general introduction to DSCs, see [here](https://github.com/stephens999/dscr/blob/master/intro.md).
 
-This dsc aims to benchmark the package multiseq for internal testing purposes. Different simulation scenarios can be considered, and different options for multiseq can be specified. The next step is to include WaveQTL as a possible alternative, and to compare results across methods and between different versions.
+This dsc aims to benchmark the package multiseq for internal testing purposes. Different simulation scenarios can be considered, and different options for multiseq can be specified. WaveQTL (Heejung Shim and Matthew Stephens) is also included for testing and comparison purposes.
+
 
 
 # Input, meta and output formats
@@ -15,7 +16,7 @@ This DSC uses the following formats:
 `input: list(sim.data [matrix], g [vector])` #sim.data is a simulated matrix of Poisson or overdispersed Poisson counts. g contains the grouping indicator for each row of sim.data
 
 
-`output: results from running multiseq [list]` 
+`output: results from running multiseq [list] or WaveQTL [numeric]` 
 
 
 # Scores
@@ -42,7 +43,7 @@ To add a scenario there are two steps, the first of which can be skipped if you 
 - add a `.R` file containing an R function implenting a datamaker to the `datamakers/` subdirectory
 - add the scenario to the list of scenarios in the `scenarios.R` file.
 
-Each datamaker function must return a `list(meta,input)` where `meta` and `input` are each lists with the correct format
+Each datamaker function must return a `list(input)` where `input` is a list with the correct format
 (defined above).
 
 
