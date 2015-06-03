@@ -1,5 +1,10 @@
-datamaker = function(args){
+#pois.2grp generates the specified number samples, each of which is a Poisson process generated from the baseline (null) or baseline*effect (alternative). 
+#The samples are automatically classified into two groups, with an equal number of samples in each group
+
+pois.2grp = function(args){
   
+  if(m%%2 != 0) stop("The number of samples must be a multiple of 2")
+
   m = args$m
   type = args$type
   baseline = args$baseline

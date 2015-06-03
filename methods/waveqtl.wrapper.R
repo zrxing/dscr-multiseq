@@ -3,7 +3,7 @@
 #the output should be a list of the appropriate "output" format (defined in the README)
 
 #source the preprocess file
-source("~/WaveQTL/R/WaveQTL_preprocess_funcs.R")
+source("WaveQTL_preprocess_funcs.R")
 
 
 
